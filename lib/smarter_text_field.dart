@@ -46,11 +46,10 @@ class _SmartTextFormFieldState extends State<SmartTextFormField> {
     obscureText = widget.obscureText;
 
     widget.focusNode.addListener(() {
-      if (widget.focusNode.hasFocus) {
+      if (widget.focusNode.hasFocus && !hasBeenFocusOnce) {
         setState(() {
-          forceError = false;
+          hasBeenFocusOnce = true;
         });
-        hasBeenFocusOnce = true;
       }
       if (!widget.focusNode.hasFocus && hasBeenFocusOnce && mounted) {
         setState(() {
@@ -62,19 +61,25 @@ class _SmartTextFormFieldState extends State<SmartTextFormField> {
 
   @override
   Widget build(BuildContext context) {
+    Widget suffixIcon;
+
+    if (widget.displayObscureTextToggle)
+      suffixIcon = IconButton(
+        onPressed: () {
+          setState(() {
+            obscureText = !obscureText;
+          });
+        },
+        icon: Icon(obscureText ? Icons.visibility : Icons.visibility_off),
+      );
+
+    final InputDecoration decoration = (widget.decoration ??
+            InputDecoration()
+                .applyDefaults(Theme.of(context).inputDecorationTheme))
+        .copyWith(suffixIcon: suffixIcon);
+
     return TextFormField(
-      decoration: widget.decoration.copyWith(
-          suffixIcon: widget.displayObscureTextToggle
-              ? IconButton(
-                  onPressed: () {
-                    setState(() {
-                      obscureText = !obscureText;
-                    });
-                  },
-                  icon: Icon(
-                      obscureText ? Icons.visibility : Icons.visibility_off),
-                )
-              : null),
+      decoration: decoration,
       validator: widget.validator,
       controller: widget.controller,
       focusNode: widget.focusNode,

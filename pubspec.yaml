@@ -1,6 +1,6 @@
 name: smarter_text_field
 description: A smarter text form field widget
-version: 0.0.1
+version: 0.0.2
 homepage: https://github.com/GaspardMerten/smarter_text_field
 
 environment:

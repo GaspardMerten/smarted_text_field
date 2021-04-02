@@ -15,6 +15,7 @@ class SmartTextFormField extends StatefulWidget {
     this.forceError = false,
     this.autoFillHints = const [],
     this.displayObscureTextToggle = false,
+    this.style,
   }) : super(key: key);
 
   final InputDecoration decoration;
@@ -27,6 +28,7 @@ class SmartTextFormField extends StatefulWidget {
   final TextInputAction action;
   final List<String> autoFillHints;
   final Function() completeAction;
+  final TextStyle style;
 
   @override
   _SmartTextFormFieldState createState() => _SmartTextFormFieldState();
@@ -81,6 +83,7 @@ class _SmartTextFormFieldState extends State<SmartTextFormField> {
     return TextFormField(
       decoration: decoration,
       validator: widget.validator,
+      style: widget.style,
       controller: widget.controller,
       focusNode: widget.focusNode,
       obscureText: obscureText,

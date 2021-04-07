@@ -1,3 +1,7 @@
+## [0.0.4] - 04-07-2021
+
+* Migrating to null safety
+
 ## [0.0.3] - 04-02-2021
 
 * Adding the ability to specify a text style.

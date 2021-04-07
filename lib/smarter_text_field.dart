@@ -4,13 +4,13 @@ import 'package:flutter/material.dart';
 
 class SmartTextFormField extends StatefulWidget {
   const SmartTextFormField({
-    Key key,
+    Key? key,
+    required this.controller,
+    required this.focusNode,
     this.decoration,
     this.validator,
-    this.controller,
-    this.focusNode,
-    this.obscureText,
-    this.action,
+    this.obscureText = false,
+    this.action = TextInputAction.done,
     this.completeAction,
     this.forceError = false,
     this.autoFillHints = const [],
@@ -18,28 +18,30 @@ class SmartTextFormField extends StatefulWidget {
     this.style,
   }) : super(key: key);
 
-  final InputDecoration decoration;
-  final FormFieldValidator<String> validator;
   final TextEditingController controller;
   final FocusNode focusNode;
+
+  final InputDecoration? decoration;
+  final FormFieldValidator<String>? validator;
   final bool obscureText;
   final bool displayObscureTextToggle;
   final bool forceError;
   final TextInputAction action;
   final List<String> autoFillHints;
-  final Function() completeAction;
-  final TextStyle style;
+  final Function()? completeAction;
+  final TextStyle? style;
 
   @override
   _SmartTextFormFieldState createState() => _SmartTextFormFieldState();
 }
 
 class _SmartTextFormFieldState extends State<SmartTextFormField> {
+  late bool obscureText;
+
   bool hasBeenUnFocusOnce = false;
   bool hasBeenFocusOnce = false;
 
   bool forceError = false;
-  bool obscureText = false;
 
   @override
   void initState() {
@@ -63,7 +65,7 @@ class _SmartTextFormFieldState extends State<SmartTextFormField> {
 
   @override
   Widget build(BuildContext context) {
-    Widget suffixIcon;
+    Widget? suffixIcon;
 
     if (widget.displayObscureTextToggle)
       suffixIcon = IconButton(

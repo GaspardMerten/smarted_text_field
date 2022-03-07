@@ -1,3 +1,11 @@
+## [0.0.6] - 07-03-2022
+
+* Fixing  the maxLines attribute
+
+## [0.0.5] - 24-02-2022
+
+* Adding the ability to specify the maxLines attribute
+
 ## [0.0.4] - 04-07-2021
 
 * Migrating to null safety

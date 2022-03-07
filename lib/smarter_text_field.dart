@@ -12,6 +12,7 @@ class SmartTextFormField extends StatefulWidget {
     this.obscureText = false,
     this.action = TextInputAction.done,
     this.completeAction,
+    this.maxLines = 1,
     this.forceError = false,
     this.autoFillHints = const [],
     this.displayObscureTextToggle = false,
@@ -21,6 +22,7 @@ class SmartTextFormField extends StatefulWidget {
   final TextEditingController controller;
   final FocusNode focusNode;
 
+  final int? maxLines;
   final InputDecoration? decoration;
   final FormFieldValidator<String>? validator;
   final bool obscureText;
@@ -89,6 +91,7 @@ class _SmartTextFormFieldState extends State<SmartTextFormField> {
       controller: widget.controller,
       focusNode: widget.focusNode,
       obscureText: obscureText,
+      maxLines: widget.maxLines,
       autovalidateMode: hasBeenUnFocusOnce || widget.forceError
           ? AutovalidateMode.always
           : AutovalidateMode.disabled,

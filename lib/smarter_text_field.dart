@@ -12,6 +12,7 @@ class SmartTextFormField extends StatefulWidget {
     this.obscureText = false,
     this.action = TextInputAction.done,
     this.completeAction,
+    this.keyboardType,
     this.maxLines = 1,
     this.forceError = false,
     this.autoFillHints = const [],
@@ -29,6 +30,7 @@ class SmartTextFormField extends StatefulWidget {
   final bool displayObscureTextToggle;
   final bool forceError;
   final TextInputAction action;
+  final TextInputType? keyboardType;
   final List<String> autoFillHints;
   final Function()? completeAction;
   final TextStyle? style;
@@ -88,6 +90,7 @@ class _SmartTextFormFieldState extends State<SmartTextFormField> {
       decoration: decoration,
       validator: widget.validator,
       style: widget.style,
+      keyboardType: widget.keyboardType,
       controller: widget.controller,
       focusNode: widget.focusNode,
       obscureText: obscureText,

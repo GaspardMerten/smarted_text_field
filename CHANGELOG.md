@@ -1,3 +1,7 @@
+## [0.0.7] - 09-03-2022
+
+* Adding the ability to specify the keyboard type
+
 ## [0.0.6] - 07-03-2022
 
 * Fixing  the maxLines attribute
